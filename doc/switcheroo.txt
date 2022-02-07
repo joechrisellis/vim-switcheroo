@@ -1,16 +1,67 @@
-*vim-switcheroo.txt* Extend the behaviour of the `~` command
+*vim-switcheroo.txt* Extend the behaviour of the |~| command
 
 Author:  Joe Ellis
 License: Same terms as Vim itself (see |license|)
 
 CONTENTS                                        *switcheroo* *switcheroo-contents*
 
-todo
+    INTRODUCTION...................................: |switcheroo-introduction|
+    INSTALLATION...................................: |switcheroo-installation|
+    MAPS...................................................: |switcheroo-maps|
+    CONFIGURATION.................................: |switcheroo-configuration|
+    ISSUES...............................................: |switcheroo-issues|
 
 
 INTRODUCTION                                    *switcheroo-introduction*
 
-todo
+This plugin allows you to extend the functionality of the |~| key in Vim.
+
+In vanilla Vim, the |~| key is used to switch the case of either the character
+under the cursor or the visually selected text. Similarly, |g~| is an operator
+to switch the case of characters over a text object or motion.
+
+Using this plugin, you can define new pairs of alternative characters. For
+example, you can make `-` be switched to `_` and `_` be switched to `-` with
+the |~| key.
+
+
+INSTALLATION                                    *switcheroo-installation*
+
+The easiest way to install the plugin is with a plugin manager.
+
+- vim-plug: https://github.com/junegunn/vim-plug
+- Vundle:   https://github.com/VundleVim/Vundle.vim
+
+If you use one, just follow the instructions in its documentation For
+example, if you use vim-plug, you would want to add the following line to your
+Vim configuration:
+>
+    Plug 'joechrisellis/vim-switcheroo'
+
+MAPS                                            *switcheroo-maps*
+                                                *switcheroo-shadows*
+To implement the custom switching behaviour, the plugin shadows the following
+built-in maps:
+
+    |~|, |g~|, |g~~|, |g~g~|
+
+
+CONFIGURATION                                   *switcheroo-configuration*
+                                                *g:switcheroo*
+
+There is a single configuration variable, |g:switcheroo|, which you use to
+create pairs of alternate characters. An example is below:
+>
+    let g:switcheroo = [
+    \ ["'", '"'],
+    \ ["-", "_"],
+    \ ]
+<
+This will cause the |~| key to switch `'` to `"` (and vice-versa), and `-` to
+`_` (and vice-versa).
+
+Make sure that your configuration is loaded after the plugin. This usually
+means putting it inside an |after-directory|.
 
 
 ISSUES                                          *switcheroo-issues*
