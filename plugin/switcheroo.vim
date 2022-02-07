@@ -22,3 +22,5 @@ xnoremap <silent> ~ <cmd>call switcheroo#SwitcherooVisual()<cr>
 
 nnoremap <expr> <Plug>(switcheroo) switcheroo#SwitcherooOp()
 nmap g~ <Plug>(switcheroo)
+nmap g~~ g~_
+nmap g~g~ g~_
